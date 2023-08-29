@@ -20,7 +20,9 @@ class Student extends React.Component {
       class:"A",
       color:"red",
       componentDidMount:"true",
-      getDerivedStateFromProps:"red"
+      getDerivedStateFromProps:"red",
+      getSnapshotBeforeUpdate:"true",
+      unmount:true
     }
   }
 
@@ -36,8 +38,11 @@ class Student extends React.Component {
   componentDidMount(){
     setTimeout(()=>{
       this.setState({componentDidMount:"false"})
+      this.setState({getSnapshotBeforeUpdate:"false"})
     },2000)
   }
+
+  //custom functions
   changeName = () => {
     //setState method to change state
     this.setState({name:'Burhan'})
@@ -46,8 +51,26 @@ class Student extends React.Component {
     //setState method to change state
     this.setState({getDerivedStateFromProps:'green'})
   }
+  runwillmount = () => {
+    this.setState({unmount:false})
+  }
+  //custom functions end
+
+  //getsnapshot will run before props 
+  getSnapshotBeforeUpdate(prevProps, prevState){
+    document.getElementById("div1").innerHTML = "Im prev props before update:" + prevState.componentDidMount
+  }
+  //compoent should be called with getsnapshot otherwise we get an error it will run after the state or props changed
+  componentDidUpdate(){
+    document.getElementById("div2").innerHTML = "Im the props after update:" + this.state.getSnapshotBeforeUpdate
+
+  }
   //render method that render html
   render(){
+    let header
+    if(this.state.unmount){
+      header = <Hamza/>
+    }
     return(
       <div>
         <h1>Hello Im class component</h1>
@@ -58,7 +81,13 @@ class Student extends React.Component {
         <h1>Im componentDidMount state: {this.state.componentDidMount}</h1>
         <h1>Im getDerivedStateFromProps with button state: {this.state.getDerivedStateFromProps}</h1>
         <button type='button' onClick={this.changestate}>State Change</button>
+        <div id='div1'></div>
+        <div id='div2'></div>
+        {header}
+        <button type='button' onClick={this.runwillmount}>unmount compoent</button>
+
         <Hamza />
+
       </div>
     )
   }
@@ -67,10 +96,13 @@ class Student extends React.Component {
 
 //child class component
 class Hamza extends React.Component{
+  componentWillUnmount(){
+    alert("Component is removed from dom and component willunmount is runned")
+  }
   render(){
     return(
       <div>
-        <h1>Im child</h1>
+        <h1>Im child compoent</h1>
       </div>
     )
   }
