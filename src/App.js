@@ -3,7 +3,7 @@ import Game from './main/game.jsx'
 function App() {
   return(
     <>
-      < Game />
+      < Game color="red" border="1px" />
     </>
   )
   

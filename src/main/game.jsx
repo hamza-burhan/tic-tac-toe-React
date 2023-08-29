@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './game.css'
 import { useEffect } from 'react';
-export default function Game (){
+export default function Game (props){
     const [showcircle, setshowcircle] = useState(false);
 const [showCrossleicon, setshowCrossleicon] = useState(false);
 const [indexnumber,setindexnumber] = useState(0)
@@ -21,7 +21,7 @@ const toggle = (index) => {
    
     return(
         <>
-            <div className='main'>
+            {/* <div className='main'>
                 <div className='game-container'>
                     <div  className='cells' onClick={() => toggle(1)}>      
                         {showCrossleicon && <i style={{fontSize:'5rem'}} class='fa fa-close'></i>}
@@ -60,7 +60,10 @@ const toggle = (index) => {
                         {showcircle && <i style={{fontSize:'5rem'}} class='fa fa-circle-thin'></i>}
                     </div>  
                 </div>
-            </div>
+            </div> */}
+            <h1>
+                {props.border === "1px" ? "im red":"im green"}
+            </h1>
         </>
     )
 }
