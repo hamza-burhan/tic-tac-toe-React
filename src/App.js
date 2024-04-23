@@ -1,9 +1,18 @@
 import './App.css';
-import Game from './main/game.jsx'
+import Contact from './main/Pages/contact.jsx';
+import Home from './main/Pages/home.jsx'
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import Layout from './main/Pages/layout.jsx';
+
 function App() {
   return(
     <>
-      < Game color="red" border="1px" />
+    <BrowserRouter>
+      <Routes path='/layout' element={<Layout />}>
+        <Route index element={<Home color="red" border="1px" />} />
+        <Route path='/contact' element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
     </>
   )
   
