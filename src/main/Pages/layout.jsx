@@ -3,7 +3,6 @@ import { Outlet, Link } from "react-router-dom";
 export default function Layout() {
   return (
     <>
-      <h1>Hello</h1>
       <nav>
         <ul>
           <li>
