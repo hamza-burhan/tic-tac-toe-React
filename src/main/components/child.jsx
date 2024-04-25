@@ -1,9 +1,19 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import ChildKaChild from './childkachild.jsx';
+import {CustomContext} from '../../index'
 
-export default function Child ({brand,id}){
+export default function Child (){
+  const [count,setCount] = useContext(CustomContext)
+  const handleCLick = (e) => {
+    setCount(pre => count + 1)
+    console.log('count: ', count);
+  }
     return (
       <>
-          <p>this is map on child {brand}</p>
+          <h2>First Child</h2>
+          <button onClick={handleCLick} >increase context counter</button>
+          <ChildKaChild />
       </>
     )
   }
+  
