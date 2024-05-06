@@ -1,19 +1,16 @@
-import { useContext, useState } from 'react';
+import { useContext, useState,memo } from 'react';
 import ChildKaChild from './childkachild.jsx';
 import {CustomContext} from '../../index'
 
-export default function Child (){
-  const [count,setCount] = useContext(CustomContext)
-  const handleCLick = (e) => {
-    setCount(pre => count + 1)
-    console.log('count: ', count);
-  }
+ function Child ({count,handleClick}){
+  console.log('Child renders')
     return (
       <>
-          <h2>First Child</h2>
-          <button onClick={handleCLick} >increase context counter</button>
-          <ChildKaChild />
+          <h2>First Child {count}</h2>
+          <button onClick={handleClick}>child click</button>
       </>
     )
   }
+
+  export default memo(Child)
   

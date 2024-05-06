@@ -1,46 +1,24 @@
-import { useState,useEffect, useRef,useReducer  } from 'react';
+import { useState,useEffect, useRef,useReducer, useCallback  } from 'react';
 import '../Styles/home.scss'
 import Child from '../components/child';
 
 export default function Home (){
-  const initialState = [
-    {
-      id:1,
-      todo: 'one'
-    },
-    {
-      id:2,
-      todo: 'two'
-    }
-  ]
-  const reducerFunction = (state,action) => {
-    console.log('reducerFunction action: ', action);
-    console.log('reducerFunction state: ', state);
-    if(action.type >= 2){
-      return [...state,{id:3,todo: 'three'}]
-    }else{
-      return state
-    }
-    
-  }
-  const [state, dispatch] = useReducer(reducerFunction, initialState)
+  const [count, setCount] = useState(0)
+  const [anotherCount, setanotherCount] = useState(0)
 
-  const handleChange = (e) => {
-    console.log('e: ', e);
-    dispatch({type: e.id})
+  const handleClick = useCallback(() => {
+    console.log('event')
+  },[anotherCount])
+
+  const increase = () => {
+    setCount(pre => pre + 1)
   }
   return (
     <>
       <h1>Home Page</h1>
-      <h2>reducerFunction state </h2>
-      {state.map((s,index) => {
-        return (
-          <div key={s.id}> 
-            <input type='checkbox' onChange={() => handleChange(s)} />
-            <span>{s.todo}</span>
-          </div>
-        )
-      })}
+      <Child count={anotherCount} handleClick={handleClick} />
+      <h2>Counter {count}</h2>
+      <button onClick={increase}>parent Click</button>
     </>
   )
 }
