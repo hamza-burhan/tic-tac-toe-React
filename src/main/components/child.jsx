@@ -1,16 +1,22 @@
 import { useContext, useState,memo } from 'react';
 import ChildKaChild from './childkachild.jsx';
 import {CustomContext} from '../../index'
-
- function Child ({count,handleClick}){
-  console.log('Child renders')
+import React from 'react'
+ class Child extends React.Component{
+  constructor(props){
+    super(props)
+  }
+  render(){
     return (
       <>
-          <h2>First Child {count}</h2>
-          <button onClick={handleClick}>child click</button>
+          <h2>First Child </h2>
+          <h2>props from parent {this.props.color}</h2>
+
       </>
     )
   }
+   
+  }
 
-  export default memo(Child)
+  export default Child
   
