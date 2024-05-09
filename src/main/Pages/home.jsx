@@ -13,7 +13,7 @@ export default class Home extends React.Component {
       <>
         <h2>Home page</h2>
         <h2>class state {this.state.color}</h2>
-        <Child color={this.state.color} />
+        <Child color={this.state.color} carModel={'mg'} />
       </>
     )
   }
