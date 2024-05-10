@@ -7,21 +7,32 @@ import React from 'react'
     super(props)
     this.state = {model: 'vigo'}
   }
-  static getDerivedStateFromProps(props,state){
-    return {model: props.carModel}
+
+  componentDidMount(){
+    setTimeout(() => {
+      this.setState({model: 'dala'})
+    },2000)
   }
+
+  getSnapshotBeforeUpdate(prevProps,prevState){
+    document.getElementById('div1').innerHTML = prevState.model
+  }
+
+  componentDidUpdate(){
+    document.getElementById('div2').innerHTML = this.state.model
+  }
+
  
-  handleClick = () => {
-    this.setState({ model: 'changedByButton'})
-    console.log('this.state.model: ', this.state.model);
-  }
+
+  
   render(){
     return (
       <>
           <h2>First Child </h2>
-          <h2>props from parent {this.props.color}</h2>
-          <h2>state changed by props and after mounting {this.state.model}</h2>
-          <button onClick={this.handleClick}>Click</button>
+          <p>curernt state {this.state.model}</p>
+          <div id='div1'></div>
+          <div id='div2'></div>
+
       </>
     )
   }
