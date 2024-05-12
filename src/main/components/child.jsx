@@ -6,7 +6,7 @@ import  ReactDOM  from 'react-dom';
  function Child(){
     return (
       <>
-          <h2>First Child </h2>
+          <h2>First Child </h2> 
           {ReactDOM.createPortal(
         <p>This child is placed in the document body.</p> ,
         document.getElementById('sroot')
