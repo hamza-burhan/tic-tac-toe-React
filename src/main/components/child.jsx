@@ -2,16 +2,15 @@ import { useContext, useState,memo } from 'react';
 import ChildKaChild from './childkachild.jsx';
 import {CustomContext} from '../../index'
 import React from 'react'
- function Child({sendData}){
-  const handleChange = (e) => {
-    sendData(e.target.value)
-  }
-
+import  ReactDOM  from 'react-dom';
+ function Child(){
     return (
       <>
           <h2>First Child </h2>
-          <label>Child Input</label>
-          <input type="text" onChange={handleChange}/>
+          {ReactDOM.createPortal(
+        <p>This child is placed in the document body.</p> ,
+        document.getElementById('sroot')
+      )}
       </>
     )
   }

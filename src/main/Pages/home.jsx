@@ -12,8 +12,6 @@ export default function Home() {
     return (
       <>
         <h2>Home page</h2>
-        <h3>input data coming from child:: {childData}</h3>
-        <Child sendData={handleChildData} />
       </>
     )
  
