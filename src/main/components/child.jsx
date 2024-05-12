@@ -2,41 +2,18 @@ import { useContext, useState,memo } from 'react';
 import ChildKaChild from './childkachild.jsx';
 import {CustomContext} from '../../index'
 import React from 'react'
- class Child extends React.Component{
-  constructor(props){
-    super(props)
-    this.state = {model: 'vigo'}
+ function Child({sendData}){
+  const handleChange = (e) => {
+    sendData(e.target.value)
   }
 
-  componentDidMount(){
-    setTimeout(() => {
-      this.setState({model: 'dala'})
-    },2000)
-  }
-
-  getSnapshotBeforeUpdate(prevProps,prevState){
-    document.getElementById('div1').innerHTML = prevState.model
-  }
-
-  componentDidUpdate(){
-    document.getElementById('div2').innerHTML = this.state.model
-  }
-
- 
-
-  
-  render(){
     return (
       <>
           <h2>First Child </h2>
-          <p>curernt state {this.state.model}</p>
-          <div id='div1'></div>
-          <div id='div2'></div>
-
+          <label>Child Input</label>
+          <input type="text" onChange={handleChange}/>
       </>
     )
-  }
-   
   }
 
   export default Child
