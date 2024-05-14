@@ -4,6 +4,7 @@ import Home from './main/Pages/home.jsx'
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Layout from './main/Pages/layout.jsx';
 import Todo from './main/Pages/todo.jsx';
+import HighOrder from './main/Pages/HighOrder.jsx';
 function App() {
   
   return(
@@ -14,6 +15,8 @@ function App() {
             <Route index element={<Home color="red" border="1px" />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/todo' element={<Todo />} />
+            <Route path='/high-order' element={<HighOrder />} />
+
 
         </Route>
       </Routes>

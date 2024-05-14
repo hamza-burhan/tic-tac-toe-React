@@ -14,6 +14,9 @@ export default function Layout() {
           <li>
             <Link to="/todo">Todo</Link>
           </li>
+          <li>
+            <Link to="/high-order">High Order</Link>
+          </li>
         </ul>
       </nav>
       <Outlet /> {/* This is where the child routes will be rendered */}

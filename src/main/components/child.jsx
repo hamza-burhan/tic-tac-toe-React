@@ -3,17 +3,19 @@ import ChildKaChild from './childkachild.jsx';
 import {CustomContext} from '../../index'
 import React from 'react'
 import  ReactDOM  from 'react-dom';
- function Child(){
-    return (
+import HighOrder from '../Pages/HighOrder.jsx';
+ 
+function Child({counter, handleCounter}){
+
+      return (
       <>
-          <h2>First Child </h2> 
-          {ReactDOM.createPortal(
-        <p>This child is placed in the document body.</p> ,
-        document.getElementById('sroot')
-      )}
+          <h2>First Child </h2>
+          <h3>Count comming from High Order {counter} </h3>
+          <button onClick={handleCounter}>Click</button>
       </>
     )
   }
+  
 
-  export default Child
+  export default HighOrder(Child)
   
