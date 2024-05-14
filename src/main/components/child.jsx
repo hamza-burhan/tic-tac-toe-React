@@ -5,17 +5,24 @@ import React from 'react'
 import  ReactDOM  from 'react-dom';
 import HighOrder from '../Pages/HighOrder.jsx';
  
-function Child({counter, handleCounter}){
+function Child(){
+  const [count, setCount] = useState(0);
 
+  const increaseCounter = () => {
+    setCount(count + 1)
+  }
+  if(count > 3){
+    throw new Error("custom error")
+  }
       return (
       <>
           <h2>First Child </h2>
-          <h3>Count comming from High Order {counter} </h3>
-          <button onClick={handleCounter}>Click</button>
+          <h3>counter: {count}</h3>
+          <button onClick={increaseCounter}>click</button>
       </>
     )
   }
   
 
-  export default HighOrder(Child)
+  export default Child
   

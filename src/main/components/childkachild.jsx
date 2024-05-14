@@ -7,10 +7,8 @@ import HighOrder from '../Pages/HighOrder';
     return (
       <>
         <h2>Second Child</h2>
-        <h3>Count comming from High Order {counter} </h3>
-        <button onClick={handleCounter}>Click</button>
       </>
     )
   }
 
-  export default HighOrder(ChildKaChild)
+  export default ChildKaChild
