@@ -12,13 +12,23 @@ import { createContext } from 'react';
 import { Provider } from 'react-redux';
 import { store } from './main/store/store';
 
-const CustomContext = createContext();
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
+const CustomContext = createContext();
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const client = new ApolloClient({
+  uri: 'https://graphqlzero.almansi.me/api',
+  cache: new InMemoryCache()
+})
+
 root.render(
-  <Provider store={store}>
-    <App/>
-  </Provider>
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+      <App/>
+    </Provider>
+  </ApolloProvider>
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
